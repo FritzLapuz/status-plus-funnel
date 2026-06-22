@@ -1,0 +1,34 @@
+:root {
+  /* Colors */
+  --color-black: #000000;
+  --color-status-red: #F41C18;
+  --color-white: #FFFFFF;
+  --color-light-gray: #F4F4F4;
+
+  --color-black-soft: #0A0A0A;
+  --color-black-glass: rgba(0, 0, 0, 0.55);
+  --color-white-glass: rgba(255, 255, 255, 0.06);
+  --color-border-glass: rgba(255, 255, 255, 0.12);
+  --color-red-glow: rgba(244, 28, 24, 0.45);
+
+  /* Typography */
+  --font-headline: 'Bebas Neue', sans-serif;
+  --font-subhead: 'Montserrat', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+
+  /* Spacing */
+  --section-padding-y: clamp(64px, 10vw, 160px);
+  --section-padding-x: clamp(20px, 6vw, 96px);
+  --max-width: 1320px;
+
+  /* Motion */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.4s;
+  --dur-med: 0.8s;
+  --dur-slow: 1.4s;
+
+  /* Shadows */
+  --shadow-premium: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+  --shadow-red-glow: 0 0 40px var(--color-red-glow);
+}
