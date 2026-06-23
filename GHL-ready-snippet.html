@@ -1,0 +1,494 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root{
+  --black:#000;
+  --black-soft:#0a0a0a;
+  --red:#f41c18;
+  --white:#fff;
+  --gray:#f4f4f4;
+  --glass:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.12);
+  --shadow:0 30px 80px -20px rgba(0,0,0,.6);
+  --max:1320px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--white);font-family:'Poppins',sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+button{font:inherit}
+
+.ghl-status-plus{background:var(--black)}
+.ghl-status-plus .section{position:relative;min-height:100vh;padding:clamp(72px,10vw,140px) clamp(20px,6vw,96px);display:flex;align-items:center}
+.ghl-status-plus .inner{max-width:var(--max);margin:0 auto;width:100%}
+.ghl-status-plus .eyebrow{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.28em;text-transform:uppercase;font-size:.75rem;color:var(--red);margin:0 0 14px}
+.ghl-status-plus h1,.ghl-status-plus h2,.ghl-status-plus h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;line-height:1.02;font-weight:400;letter-spacing:.01em;margin:0}
+.ghl-status-plus h2{font-size:clamp(2.6rem,6vw,5rem)}
+.ghl-status-plus .sub{font-family:'Montserrat',sans-serif;font-weight:500;font-size:clamp(1rem,2vw,1.35rem);max-width:760px;margin:0 auto 14px}
+.ghl-status-plus .sub-small{font-family:'Poppins',sans-serif;font-weight:300;font-size:clamp(.95rem,1.4vw,1.08rem);color:rgba(255,255,255,.75);max-width:680px;margin:0 auto 32px}
+.ghl-status-plus .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:4px;border:1px solid transparent;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;white-space:nowrap}
+.ghl-status-plus .btn:hover{transform:translateY(-3px)}
+.ghl-status-plus .btn-primary{background:var(--red);color:var(--white);border-color:var(--red);box-shadow:0 0 40px rgba(244,28,24,.25)}
+.ghl-status-plus .btn-secondary{background:rgba(255,255,255,.04);color:var(--white);border-color:var(--border);backdrop-filter:blur(12px)}
+
+.ghl-status-plus .nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:linear-gradient(to bottom, rgba(0,0,0,.72), transparent);transition:background .25s ease,border-color .25s ease,backdrop-filter .25s ease}
+.ghl-status-plus .nav.scrolled{background:rgba(0,0,0,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.ghl-status-plus .nav-inner{max-width:var(--max);margin:0 auto;padding:18px clamp(20px,6vw,96px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.ghl-status-plus .logo{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.05em}
+.ghl-status-plus .logo span{color:var(--red)}
+.ghl-status-plus .nav-links{display:flex;gap:30px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ghl-status-plus .nav-links a{position:relative;padding:4px 0}
+.ghl-status-plus .nav-links a:after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--red);transition:width .25s ease}
+.ghl-status-plus .nav-links a:hover:after{width:100%}
+.ghl-status-plus .burger{display:none;flex-direction:column;gap:5px;width:34px;height:34px;background:none;border:0;padding:0}
+.ghl-status-plus .burger span{width:100%;height:2px;background:var(--white);transition:transform .25s ease,opacity .25s ease}
+.ghl-status-plus .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ghl-status-plus .burger.open span:nth-child(2){opacity:0}
+.ghl-status-plus .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.ghl-status-plus .mobile{display:none;max-height:0;overflow:hidden;background:rgba(0,0,0,.98);transition:max-height .35s ease;border-top:1px solid var(--border)}
+.ghl-status-plus .mobile.open{max-height:440px}
+.ghl-status-plus .mobile a{display:block;padding:18px clamp(20px,6vw,96px);border-top:1px solid var(--border);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+.ghl-status-plus .mobile .btn{margin:18px clamp(20px,6vw,96px)}
+
+.ghl-status-plus .hero{padding:0;text-align:center;overflow:hidden;background:
+  radial-gradient(circle at 25% 20%, rgba(244,28,24,.22), transparent 45%),
+  radial-gradient(circle at 80% 80%, rgba(244,28,24,.15), transparent 40%),
+  linear-gradient(160deg, #0a0a0a 0%, #000 60%)}
+.ghl-status-plus .hero:before{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.7) 100%)}
+.ghl-status-plus .hero .inner{position:relative;z-index:1;padding-top:110px;display:flex;flex-direction:column;align-items:center}
+.ghl-status-plus .hero h1{font-size:clamp(2.7rem,8.7vw,6.5rem);color:var(--white);margin:10px 0 26px;line-height:.95}
+.ghl-status-plus .hero h1 .accent{color:var(--red)}
+.ghl-status-plus .hero .line{display:block}
+.ghl-status-plus .hero .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:8px 0 20px}
+.ghl-status-plus .hero .meta{font-family:'Montserrat',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.ghl-status-plus .scroll{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:1;text-align:center}
+.ghl-status-plus .scroll span{display:block;width:1px;height:50px;margin:0 auto 10px;background:linear-gradient(to bottom, transparent, var(--red));position:relative}
+.ghl-status-plus .scroll span:after{content:'';position:absolute;left:0;top:-100%;width:100%;height:100%;background:var(--white);animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{top:-100%}100%{top:100%}}
+.ghl-status-plus .scroll p{margin:0;font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+.ghl-status-plus .grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.ghl-status-plus .card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.ghl-status-plus .placeholder{min-height:300px;display:flex;align-items:center;justify-content:center;padding:30px;background:linear-gradient(135deg, rgba(244,28,24,.08), rgba(255,255,255,.03))}
+.ghl-status-plus .placeholder .tag{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:rgba(255,255,255,.65);text-align:center}
+.ghl-status-plus .img-stack{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.ghl-status-plus .img-main{aspect-ratio:3/4}
+.ghl-status-plus .img-small{aspect-ratio:1/1.05}
+.ghl-status-plus .img-main,.ghl-status-plus .img-small{overflow:hidden;border-radius:16px;box-shadow:var(--shadow);background:linear-gradient(135deg, rgba(244,28,24,.25), rgba(255,255,255,.04))}
+.ghl-status-plus .img-main img,
+.ghl-status-plus .img-small img,
+.ghl-status-plus .panel-image img{width:100%;height:100%;object-fit:cover;display:block;border-radius:16px}
+.ghl-status-plus .img-main:before,.ghl-status-plus .img-small:before{content:attr(data-label);display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);text-align:center;padding:18px}
+.ghl-status-plus .copy p{margin:0 0 10px}
+.ghl-status-plus .copy h2{margin-bottom:20px}
+.ghl-status-plus .copy .emph{color:var(--red);font-weight:600}
+
+.ghl-status-plus .section-head{text-align:center;max-width:860px;margin:0 auto 44px}
+.ghl-status-plus .section-head p{margin-left:auto;margin-right:auto}
+.ghl-status-plus .stage-cards,.ghl-status-plus .ecosystem-panels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ghl-status-plus .panel{padding:24px;border-radius:18px;border:1px solid var(--border);background:rgba(255,255,255,.03);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.ghl-status-plus .panel .icon{font-size:1.8rem;margin-bottom:10px}
+.ghl-status-plus .panel h3{font-size:2.2rem;margin-bottom:8px}
+.ghl-status-plus .panel p{margin:0 0 18px;color:rgba(255,255,255,.75)}
+.ghl-status-plus .stage-copy{min-height:72px}
+.ghl-status-plus .featured{background:linear-gradient(180deg, rgba(244,28,24,.15), rgba(255,255,255,.03))}
+
+.ghl-status-plus .cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,6vw,80px);align-items:center}
+.ghl-status-plus .ring{position:relative;width:min(74vw,560px);aspect-ratio:1/1;margin:0 auto;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:radial-gradient(circle at center, rgba(244,28,24,.08), rgba(255,255,255,.01));box-shadow:inset 0 0 0 18px rgba(255,255,255,.02)}
+.ghl-status-plus .node{position:absolute;left:50%;top:50%;width:92px;height:92px;transform:translate(-50%,-50%) rotate(calc(var(--i)*51.428deg)) translateY(-230px) rotate(calc(var(--i)*-51.428deg));display:flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--border);font-family:'Montserrat',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:12px;box-shadow:var(--shadow)}
+.ghl-status-plus .center{position:absolute;inset:50%;transform:translate(-50%,-50%);width:160px;height:160px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.14);font-family:'Montserrat',sans-serif;letter-spacing:.2em;text-transform:uppercase;font-size:.75rem}
+.ghl-status-plus .tags{display:flex;flex-wrap:wrap;gap:10px 12px;margin:18px 0 24px;padding:0}
+.ghl-status-plus .tags li{padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);font-family:'Montserrat',sans-serif;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.ghl-status-plus .cycle-statement{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4vw,4rem);line-height:.95;margin:0 0 22px}
+
+.ghl-status-plus .framework{background:var(--black-soft)}
+.ghl-status-plus .framework-list{max-width:760px;margin:0 auto;display:grid;gap:14px}
+.ghl-status-plus .framework-row{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:center;padding:16px 18px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+.ghl-status-plus .framework-letter{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);text-align:center}
+.ghl-status-plus .framework-text{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.08em;text-transform:uppercase}
+
+.ghl-status-plus .want-split{display:grid;grid-template-columns:1fr 1px 1fr;gap:28px;align-items:stretch;max-width:1000px;margin:0 auto}
+.ghl-status-plus .want-divider{background:linear-gradient(to bottom, transparent, rgba(244,28,24,.6), transparent)}
+.ghl-status-plus .want-col{padding:24px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.03)}
+.ghl-status-plus .want-col-label{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.75rem;color:var(--red);margin:0 0 16px}
+.ghl-status-plus .want-list{display:grid;gap:12px;padding:0;margin:0}
+.ghl-status-plus .want-list li{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.4rem);line-height:.95}
+.ghl-status-plus .want-list-real li{color:rgba(255,255,255,.9)}
+.ghl-status-plus .want-statement,.ghl-status-plus .assessment-sub{font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);text-align:center;margin-top:26px}
+
+.ghl-status-plus .declaration{background:linear-gradient(180deg, #050505 0%, #000 100%)}
+.ghl-status-plus .decl-lines{display:grid;gap:14px;margin:0 auto 34px;max-width:900px}
+.ghl-status-plus .decl-line{opacity:1;padding:18px 20px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.03);font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,4rem);line-height:.95;letter-spacing:.02em}
+.ghl-status-plus .decl-positive{color:var(--red)}
+.ghl-status-plus .decl-final{text-align:center;padding:24px 0 0}
+.ghl-status-plus .decl-final-sub{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);font-size:.72rem;margin:0 0 12px}
+.ghl-status-plus .decl-final-headline{font-size:clamp(3rem,7vw,6rem);margin:0 0 22px}
+.ghl-status-plus .decl-final-headline span{color:var(--red)}
+
+.ghl-status-plus .testimonials{background:var(--black-soft)}
+.ghl-status-plus .testimonial-shell{position:relative}
+.ghl-status-plus .testimonial-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+.ghl-status-plus .testimonial-track::-webkit-scrollbar{display:none}
+.ghl-status-plus .testimonial-card{flex:0 0 min(320px,80vw);scroll-snap-align:start;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.03);padding:18px;box-shadow:var(--shadow)}
+.ghl-status-plus .testimonial-thumb{height:180px;border-radius:14px;background:linear-gradient(135deg, rgba(244,28,24,.18), rgba(255,255,255,.03));display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:2rem}
+.ghl-status-plus .testimonial-quote{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:600;margin:0}
+.ghl-status-plus .testimonial-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px}
+.ghl-status-plus .testimonial-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--white)}
+.ghl-status-plus .testimonial-dots{display:flex;gap:8px}
+.ghl-status-plus .testimonial-dot{width:10px;height:10px;border-radius:50%;border:0;background:rgba(255,255,255,.25)}
+.ghl-status-plus .testimonial-dot.active{background:var(--red);box-shadow:0 0 0 4px rgba(244,28,24,.18)}
+
+.ghl-status-plus .assessment{text-align:center;background:linear-gradient(180deg, rgba(244,28,24,.12), rgba(0,0,0,.96))}
+.ghl-status-plus .assessment .inner{max-width:860px}
+.ghl-status-plus .assessment h2{font-size:clamp(2.8rem,6vw,5.4rem);margin-bottom:10px}
+
+.ghl-status-plus .footer{padding:40px clamp(20px,6vw,96px) 24px;border-top:1px solid var(--border);background:#000}
+.ghl-status-plus .footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ghl-status-plus .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.05em;margin:0 0 8px}
+.ghl-status-plus .footer-logo span{color:var(--red)}
+.ghl-status-plus .footer-name,.ghl-status-plus .footer-title{margin:0;color:rgba(255,255,255,.75)}
+.ghl-status-plus .footer-social{display:flex;gap:14px;flex-wrap:wrap}
+.ghl-status-plus .footer-social a{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03)}
+.ghl-status-plus .footer-bottom{text-align:center;margin-top:18px;color:rgba(255,255,255,.5);font-size:.9rem}
+
+.ghl-status-plus .fade{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
+.ghl-status-plus .fade.in{opacity:1;transform:none}
+
+@media (max-width: 1100px){
+  .ghl-status-plus .nav-links{display:none}
+  .ghl-status-plus .burger{display:flex}
+  .ghl-status-plus .mobile{display:block}
+  .ghl-status-plus .grid2,.ghl-status-plus .cycle-grid,.ghl-status-plus .stage-cards,.ghl-status-plus .ecosystem-panels,.ghl-status-plus .want-split{grid-template-columns:1fr}
+  .ghl-status-plus .img-stack{grid-template-columns:1fr 1fr}
+  .ghl-status-plus .want-divider{display:none}
+}
+@media (max-width: 720px){
+  .ghl-status-plus .section{padding:88px 20px}
+  .ghl-status-plus .hero .inner{padding-top:118px}
+  .ghl-status-plus .hero h1{font-size:clamp(2.3rem,12vw,4.6rem)}
+  .ghl-status-plus .hero .actions{flex-direction:column;align-items:stretch}
+  .ghl-status-plus .btn{width:100%}
+  .ghl-status-plus .img-stack{grid-template-columns:1fr}
+  .ghl-status-plus .panel h3{font-size:2rem}
+  .ghl-status-plus .node{width:74px;height:74px;transform:translate(-50%,-50%) rotate(calc(var(--i)*51.428deg)) translateY(-165px) rotate(calc(var(--i)*-51.428deg));font-size:.62rem}
+  .ghl-status-plus .center{width:120px;height:120px;font-size:.62rem}
+}
+</style>
+
+<div class="ghl-status-plus">
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">STATUS<span>PLUS</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#stage">Your Stage</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#declaration">The Declaration</a>
+        <a href="#testimonials">Stories</a>
+      </nav>
+      <a href="#assessment" class="btn btn-primary">Take the Assessment</a>
+      <button class="burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile" id="navMobile">
+      <a href="#stage">Your Stage</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#declaration">The Declaration</a>
+      <a href="#testimonials">Stories</a>
+      <a href="#assessment" class="btn btn-primary">Take the Assessment</a>
+    </div>
+  </header>
+
+  <main id="hero">
+    <section class="section hero" aria-label="Hero">
+      <div class="inner">
+        <p class="eyebrow">The Status Plus Movement</p>
+        <h1 aria-label="Even on my worst day, my status is plus.">
+          <span class="line">EVEN ON MY WORST DAY...</span>
+          <span class="line accent">MY STATUS IS PLUS.</span>
+        </h1>
+        <p class="sub">You weren't created to survive. You were created to elevate.</p>
+        <p class="sub-small">Whether you need inspiration... a new identity... or you're finally ready to do the work... Status Plus will show you your next step.</p>
+        <div class="actions">
+          <a href="#assessment" class="btn btn-primary">Take the Assessment</a>
+          <a href="#story" class="btn btn-secondary">Watch My Story</a>
+        </div>
+        <p class="meta">2-minute assessment &nbsp;·&nbsp; Discover your growth stage</p>
+      </div>
+      <div class="scroll" aria-hidden="true"><span></span><p>Scroll</p></div>
+    </section>
+
+    <section class="section" id="story" aria-label="Founder Story">
+      <div class="inner grid2">
+        <div class="img-stack">
+          <div class="img-main"><img src="https://resonant-ganache-8965d8.netlify.app/assets/img/maurice.jpeg" alt="Maurice Williams, founder of Status Plus"></div>
+          <div style="display:grid;gap:18px">
+            <div class="img-small"><img src="https://resonant-ganache-8965d8.netlify.app/assets/img/eomwd-book.png" alt="Even On My Worst Day book cover"></div>
+            <div class="img-small"><img src="https://resonant-ganache-8965d8.netlify.app/assets/img/status-plus-apparel.png" alt="Status Plus apparel"></div>
+          </div>
+        </div>
+        <div class="copy">
+          <p class="eyebrow">The Founder</p>
+          <h2>You don't look like<br>what you've been through</h2>
+          <p>I know what it's like...</p>
+          <p>To smile around people... while fighting battles nobody sees.</p>
+          <p>To want more... but keep repeating the same patterns.</p>
+          <p>To survive situations that should have broken you.</p>
+          <p>That's why I built Status Plus.</p>
+          <p class="emph">Because even when life hits hard... your status never has to decrease.</p>
+          <p style="font-weight:700;margin-top:18px">Maurice Williams<br><span style="font-family:Montserrat,sans-serif;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7)">Founder, Status Plus</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stage" aria-label="What Stage Are You In">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">Find Your Place</p>
+          <h2>What Stage Are You In?</h2>
+        </div>
+        <div class="stage-cards">
+          <article class="panel">
+            <div class="icon">📖</div>
+            <p class="eyebrow">Awareness</p>
+            <h3>Awareness</h3>
+            <p class="stage-copy">You know something needs to change. But you're still trying to believe change is possible.</p>
+            <a href="#ecosystem" class="btn btn-secondary">Discover the Book</a>
+          </article>
+          <article class="panel featured">
+            <div class="icon">🧠</div>
+            <p class="eyebrow">Transformation</p>
+            <h3>Transformation</h3>
+            <p class="stage-copy">You're done talking. Done waiting. Done making excuses.</p>
+            <a href="#ecosystem" class="btn btn-primary">Start the Challenge</a>
+          </article>
+          <article class="panel">
+            <div class="icon">👕</div>
+            <p class="eyebrow">Identity</p>
+            <h3>Identity</h3>
+            <p class="stage-copy">You're already evolving. Now it's time to wear the mindset.</p>
+            <a href="#ecosystem" class="btn btn-secondary">Shop Status Plus</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cycle" aria-label="Break the Cycle">
+      <div class="inner cycle-grid">
+        <div class="ring" aria-hidden="true">
+          <div class="node" style="--i:0">Wake Up</div>
+          <div class="node" style="--i:1">Work</div>
+          <div class="node" style="--i:2">Scroll</div>
+          <div class="node" style="--i:3">Stress</div>
+          <div class="node" style="--i:4">Escape</div>
+          <div class="node" style="--i:5">Sleep</div>
+          <div class="node" style="--i:6">Repeat</div>
+          <div class="center">The Loop</div>
+        </div>
+        <div>
+          <p class="eyebrow">The Pattern</p>
+          <h2>Break the Cycle</h2>
+          <ul class="tags">
+            <li>Overthinking</li><li>Emotional reactions</li><li>Distraction</li><li>Temporary motivation</li><li>Self sabotage</li><li>Lack of discipline</li>
+          </ul>
+          <p class="cycle-statement">Until patterns change...<br>nothing changes.</p>
+          <a href="#ecosystem" class="btn btn-primary">Break the Cycle</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ecosystem" aria-label="Status Plus Ecosystem">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">The Ecosystem</p>
+          <h2>Status Plus Ecosystem</h2>
+        </div>
+        <div class="ecosystem-panels">
+          <article class="panel"><div class="panel-image"><img src="https://resonant-ganache-8965d8.netlify.app/assets/img/eomwd-book.png" alt="Even On My Worst Day book cover"></div><div class="icon">📖</div><h3>Even On My Worst Day</h3><p>For inspiration · Perspective · Hope</p><a href="#" class="btn btn-secondary">Get the Book</a></article>
+          <article class="panel"><div class="placeholder"><div class="tag">Challenge Lifestyle</div></div><div class="icon">🧠</div><h3>15 Day Reset</h3><p>For accountability · Structure · Execution</p><a href="#" class="btn btn-secondary">Join Challenge</a></article>
+          <article class="panel"><div class="panel-image"><img src="https://resonant-ganache-8965d8.netlify.app/assets/img/status-plus-apparel.png" alt="Status Plus apparel"></div><div class="icon">👕</div><h3>Status Plus</h3><p>For confidence · Identity · Resilience</p><a href="#" class="btn btn-secondary">Wear the Message</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section framework" id="framework" aria-label="E.O.M.W.D Framework">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">The Framework</p>
+          <h2>E.O.M.W.D.</h2>
+        </div>
+        <div class="framework-list">
+          <div class="framework-row"><div class="framework-letter">E</div><div class="framework-text">Elevate Awareness</div></div>
+          <div class="framework-row"><div class="framework-letter">O</div><div class="framework-text">Own Optimism</div></div>
+          <div class="framework-row"><div class="framework-letter">M</div><div class="framework-text">Master Mindset</div></div>
+          <div class="framework-row"><div class="framework-letter">W</div><div class="framework-text">Win With Self Work</div></div>
+          <div class="framework-row"><div class="framework-letter">D</div><div class="framework-text">Discipline Over Distraction</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="want" aria-label="What People Really Want">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">The Truth</p>
+          <h2>What People Really Want</h2>
+        </div>
+        <div class="want-split">
+          <div class="want-col"><p class="want-col-label">People say they want</p><ul class="want-list"><li>More money</li><li>More opportunities</li><li>More success</li></ul></div>
+          <div class="want-divider"></div>
+          <div class="want-col"><p class="want-col-label">But what they really want</p><ul class="want-list want-list-real"><li>Peace</li><li>Clarity</li><li>Confidence</li><li>Respect</li><li>Discipline</li><li>Control</li><li>Direction</li></ul></div>
+        </div>
+        <p class="want-statement">Status Plus builds those first.</p>
+      </div>
+    </section>
+
+    <section class="section declaration" id="declaration" aria-label="Status Declaration">
+      <div class="inner">
+        <div class="decl-lines">
+          <div class="decl-line">I don't blame.</div>
+          <div class="decl-line">I don't react.</div>
+          <div class="decl-line">I don't quit.</div>
+          <div class="decl-line decl-positive">I adapt.</div>
+          <div class="decl-line decl-positive">I execute.</div>
+          <div class="decl-line decl-positive">I elevate.</div>
+        </div>
+        <div class="decl-final">
+          <p class="decl-final-sub">AND EVEN ON MY WORST DAY...</p>
+          <h2 class="decl-final-headline">MY STATUS IS <span>PLUS.</span></h2>
+          <a href="#assessment" class="btn btn-primary">Start My Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials" id="testimonials" aria-label="Testimonials">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">Real Stories</p>
+          <h2>Status Plus Voices</h2>
+        </div>
+        <div class="testimonial-shell">
+          <div class="testimonial-track" id="testimonialTrack">
+            <article class="testimonial-card"><div class="testimonial-thumb">▶</div><p class="testimonial-quote">"I stopped reacting."</p></article>
+            <article class="testimonial-card"><div class="testimonial-thumb">▶</div><p class="testimonial-quote">"I communicate differently now."</p></article>
+            <article class="testimonial-card"><div class="testimonial-thumb">▶</div><p class="testimonial-quote">"I finally finished something."</p></article>
+            <article class="testimonial-card"><div class="testimonial-thumb">▶</div><p class="testimonial-quote">"This was bigger than motivation."</p></article>
+          </div>
+          <div class="testimonial-controls">
+            <button class="testimonial-arrow" id="testimonialPrev" aria-label="Previous testimonial">←</button>
+            <div class="testimonial-dots" id="testimonialDots"></div>
+            <button class="testimonial-arrow" id="testimonialNext" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section assessment" id="assessment" aria-label="Take the Assessment">
+      <div class="inner">
+        <p class="eyebrow">Your Next Step</p>
+        <h2>Discover Your Growth Stage</h2>
+        <p class="assessment-sub">A 2-minute assessment. One honest next step.</p>
+        <a href="#" class="btn btn-primary">Take the Assessment</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-logo">STATUS<span>PLUS</span></p>
+        <p class="footer-name">Maurice Williams</p>
+        <p class="footer-title">Founder, Status Plus</p>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Status Plus. All rights reserved.</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('.ghl-status-plus');
+  if(!root) return;
+
+  var year = root.querySelector('#year');
+  if(year) year.textContent = new Date().getFullYear();
+
+  var nav = root.querySelector('#nav');
+  var burger = root.querySelector('#navBurger');
+  var mobile = root.querySelector('#navMobile');
+
+  window.addEventListener('scroll', function(){
+    if(!nav) return;
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      var open = burger.classList.toggle('open');
+      mobile.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    mobile.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        burger.classList.remove('open');
+        mobile.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  var obs = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting) entry.target.classList.add('in');
+    });
+  }, { threshold: 0.18 }) : null;
+  root.querySelectorAll('.fade').forEach(function(el){
+    if(obs) obs.observe(el); else el.classList.add('in');
+  });
+
+  var track = root.querySelector('#testimonialTrack');
+  var dotsWrap = root.querySelector('#testimonialDots');
+  var prevBtn = root.querySelector('#testimonialPrev');
+  var nextBtn = root.querySelector('#testimonialNext');
+  if(track && dotsWrap){
+    var cards = Array.prototype.slice.call(track.children);
+    cards.forEach(function(_, i){
+      var dot = document.createElement('button');
+      dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+      dot.addEventListener('click', function(){ scrollToCard(i); });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function currentIndex(){
+      var left = track.scrollLeft;
+      var idx = 0, dist = Infinity;
+      cards.forEach(function(card, i){
+        var d = Math.abs(card.offsetLeft - left);
+        if(d < dist){ dist = d; idx = i; }
+      });
+      return idx;
+    }
+    function scrollToCard(i){
+      var card = cards[i];
+      if(!card) return;
+      track.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    }
+    function updateDots(){
+      var idx = currentIndex();
+      dots.forEach(function(dot, i){ dot.classList.toggle('active', i === idx); });
+    }
+    if(prevBtn) prevBtn.addEventListener('click', function(){ scrollToCard(Math.max(0, currentIndex() - 1)); });
+    if(nextBtn) nextBtn.addEventListener('click', function(){ scrollToCard(Math.min(cards.length - 1, currentIndex() + 1)); });
+    var t;
+    track.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(updateDots, 90); }, { passive: true });
+  }
+})();
+</script>
