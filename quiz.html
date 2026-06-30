@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status Plus Mindset Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Brand Tokens ── */
+    :root {
+      --red:        #F41C18;
+      --red-glow:   rgba(244, 28, 24, 0.45);
+      --red-dim:    rgba(244, 28, 24, 0.12);
+      --bg:         #000000;
+      --bg-soft:    #0A0A0A;
+      --bg-card:    rgba(255,255,255,0.04);
+      --border:     rgba(255,255,255,0.10);
+      --border-red: rgba(244,28,24,0.45);
+      --white:      #FFFFFF;
+      --muted:      rgba(255,255,255,0.45);
+      --font-head:  'Bebas Neue', sans-serif;
+      --font-sub:   'Montserrat', sans-serif;
+      --font-body:  'Poppins', sans-serif;
+      --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { width: 100%; overflow-x: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; color: inherit; font-family: inherit; }
+    ::selection { background: var(--red); color: var(--white); }
+
+    /* ── Screens ── */
+    .screen { display: none; }
+    .screen.active { display: flex; }
+
+    /* ════════════════════════════════════
+       INTRO SCREEN
+    ════════════════════════════════════ */
+    #intro {
+      min-height: 100dvh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+      background: var(--bg-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #intro::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle at center, rgba(244,28,24,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    #intro::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.055;
+      background:
+        repeating-linear-gradient(
+          -55deg,
+          rgba(244,28,24,1) 0px,
+          rgba(244,28,24,1) 1px,
+          transparent 1px,
+          transparent 60px
+        );
+    }
+
+    .intro-glow-br {
+      position: absolute;
+      bottom: -120px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle at center, rgba(244,28,24,0.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .intro-splatter {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+      opacity: 0.85;
+      mix-blend-mode: screen;
+    }
+
+    .intro-shield {
+      font-size: 48px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .intro-eyebrow {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .intro-title {
+      font-family: var(--font-head);
+      font-size: clamp(42px, 11vw, 80px);
+      line-height: 0.95;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .intro-title span {
+      display: block;
+      background: linear-gradient(135deg, #fff 40%, rgba(255,255,255,0.55) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .intro-sub {
+      font-family: var(--font-head);
+      font-size: clamp(15px, 4vw, 20px);
+      letter-spacing: 4px;
+      color: var(--red);
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .intro-rule {
+      width: 48px; height: 1px;
+      background: var(--red);
+      margin: 0 auto 36px;
+      position: relative;
+    }
+
+    .intro-copy {
+      max-width: 380px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .intro-copy strong { color: var(--white); font-weight: 600; }
+
+    .intro-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 52px;
+      max-width: 340px;
+      position: relative;
+    }
+
+    .btn-start {
+      position: relative;
+      background: var(--red);
+      color: var(--white);
+      padding: 20px 52px;
+      font-family: var(--font-sub);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      box-shadow: 0 8px 40px rgba(244,28,24,0.35);
+    }
+
+    .btn-start:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 52px rgba(244,28,24,0.55);
+    }
+
+    .intro-question-count {
+      margin-top: 24px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    /* ════════════════════════════════════
+       QUIZ SCREEN
+    ════════════════════════════════════ */
+    #quiz {
+      flex-direction: column;
+      min-height: 100dvh;
+      background: #080808;
+    }
+
+    /* Progress Bar */
+    .prog-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 20px 12px;
+    }
+
+    .prog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .prog-brand {
+      font-family: var(--font-sub);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .prog-count {
+      font-family: var(--font-sub);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .prog-track {
+      height: 2px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 100px;
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: var(--red);
+      border-radius: 100px;
+      transition: width 0.55s var(--ease);
+      box-shadow: 0 0 10px var(--red-glow);
+    }
+
+    /* Question wrapper */
+    .q-wrap {
+      padding-top: 56px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      animation: slideUp 0.4s var(--ease) both;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Splatter PNG — fixed so it covers the full viewport behind all questions */
+    .q-splatter {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    /* Hero Image */
+    .q-img-wrap {
+      position: relative;
+      width: 100%;
+      height: clamp(220px, 42vw, 340px);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .q-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: saturate(0.6) brightness(0.65);
+    }
+
+    .q-img-grad {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(0,0,0,0.15)  0%,
+          rgba(0,0,0,0.55)  45%,
+          rgba(10,0,0,0.97) 100%
+        ),
+        linear-gradient(135deg,
+          rgba(244,28,24,0.18) 0%,
+          transparent 60%
+        );
+    }
+
+    .q-cat-pill {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid var(--border-red);
+      color: var(--red);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-family: var(--font-sub);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Question body */
+    .q-body {
+      flex: 1;
+      padding: 24px 20px 48px;
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .q-num {
+      font-family: var(--font-sub);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .q-text {
+      font-family: var(--font-sub);
+      font-size: clamp(18px, 4.5vw, 22px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+
+    /* Options */
+    .q-options { display: flex; flex-direction: column; gap: 11px; }
+
+    .opt {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .opt::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--red-dim), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .opt:hover { border-color: var(--border-red); transform: translateX(3px); }
+    .opt:hover::after { opacity: 1; }
+    .opt:active { transform: scale(0.98); }
+
+    .opt.selected {
+      border-color: var(--red);
+      background: rgba(244,28,24,0.1);
+    }
+    .opt.selected::after { opacity: 1; }
+
+    .opt-letter {
+      width: 36px; height: 36px; min-width: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-red);
+      background: var(--red-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sub);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--red);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .opt.selected .opt-letter {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+    }
+
+    .opt-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.8);
+      position: relative;
+      z-index: 1;
+    }
+    .opt.selected .opt-text { color: var(--white); font-weight: 500; }
+
+    /* ════════════════════════════════════
+       BREAK SCREEN
+    ════════════════════════════════════ */
+    #break-screen {
+      min-height: 100dvh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 28px;
+      background: var(--bg-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #break-screen::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle at center, rgba(244,28,24,0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    #break-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background:
+        repeating-linear-gradient(
+          -55deg,
+          rgba(244,28,24,1) 0px,
+          rgba(244,28,24,1) 1px,
+          transparent 1px,
+          transparent 60px
+        );
+    }
+
+    .break-glow-tl {
+      position: absolute;
+      top: -100px; left: -80px;
+      width: 450px; height: 450px;
+      background: radial-gradient(circle at center, rgba(244,28,24,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* ── Result Links ── */
+    .res-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .res-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-family: var(--font-sub);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .res-link-btn.primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 6px 28px rgba(244,28,24,0.35);
+    }
+
+    .res-link-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(244,28,24,0.55);
+    }
+
+    .res-link-btn.outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .res-link-btn.outline:hover {
+      border-color: var(--red);
+      color: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .break-fire {
+      font-size: 52px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .break-tag {
+      font-family: var(--font-sub);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .break-headline {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 8vw, 54px);
+      line-height: 1.05;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .break-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+      margin-bottom: 60px;
+      max-width: 340px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .break-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-sub);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .break-btn:hover { color: var(--white); }
+
+    .break-arrow {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    .break-btn:hover .break-arrow {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ════════════════════════════════════
+       RESULTS SCREEN
+    ════════════════════════════════════ */
+    #results {
+      flex-direction: column;
+      min-height: 100dvh;
+      background: var(--bg-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #results::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse at top, rgba(244,28,24,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .res-inner {
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 72px 24px 80px;
+      position: relative;
+    }
+
+    .res-header { text-align: center; margin-bottom: 40px; }
+
+    .res-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-dim);
+      border: 1px solid var(--border-red);
+      color: var(--red);
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-family: var(--font-sub);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .res-icon { font-size: 64px; display: block; margin-bottom: 16px; }
+
+    .res-label {
+      font-family: var(--font-sub);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .res-type {
+      font-family: var(--font-head);
+      font-size: clamp(34px, 9vw, 58px);
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .res-tagline {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--red);
+      line-height: 1.6;
+    }
+
+    /* Score bars */
+    .score-section { margin-bottom: 36px; }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .divider-line {
+      flex: 1; height: 1px;
+      background: var(--border);
+    }
+
+    .divider-label {
+      font-family: var(--font-sub);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .score-bars { display: flex; flex-direction: column; gap: 10px; }
+
+    .score-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .score-ltr {
+      font-family: var(--font-sub);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      width: 20px;
+    }
+
+    .score-track {
+      flex: 1; height: 5px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      border-radius: 100px;
+      transition: width 1.1s var(--ease);
+    }
+
+    .score-val {
+      font-family: var(--font-sub);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      width: 18px;
+      text-align: right;
+    }
+
+    /* Description card */
+    .res-desc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 36px;
+    }
+
+    /* Product card */
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .product-badge {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 9px 20px;
+      font-family: var(--font-sub);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .product-body { padding: 24px; }
+
+    .product-icon { font-size: 40px; margin-bottom: 14px; display: block; }
+
+    .product-title {
+      font-family: var(--font-head);
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .product-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 22px;
+    }
+
+    .btn-cta {
+      display: block;
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      padding: 17px;
+      font-family: var(--font-sub);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      text-align: center;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      box-shadow: 0 6px 28px rgba(244,28,24,0.3);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(244,28,24,0.5);
+    }
+
+    .secondary-offer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 14px 20px;
+      line-height: 1.7;
+    }
+
+    .secondary-offer a { color: var(--red); text-decoration: underline; }
+
+    .res-footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .res-footer-brand {
+      font-family: var(--font-head);
+      font-size: 18px;
+      letter-spacing: 4px;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+
+    .res-footer-tag {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1.5px;
+    }
+
+    /* ── Utility ── */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .fade-in { animation: fadeIn 0.5s var(--ease) both; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════ INTRO ═══════════════════ -->
+<div id="intro" class="screen active">
+  <img class="intro-splatter" src="https://assets.cdn.filesafe.space/vGU4Dd2wBV6N22A3YsRS/media/6a43ef0fc597b88b612d98c9.png" alt="" aria-hidden="true" />
+  <div class="intro-glow-br" aria-hidden="true"></div>
+  <div class="intro-shield" style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.15em;color:#F41C18;">SP</div>
+  <div class="intro-eyebrow">Status Plus Presents</div>
+  <h1 class="intro-title">
+    <span>The Status Plus</span>
+    <span>Mindset</span>
+    <span>Assessment</span>
+  </h1>
+  <div class="intro-sub">Are You Repeating, Preparing, or Evolving?</div>
+  <div class="intro-rule"></div>
+  <div class="intro-copy">
+    <p>There are no right or wrong answers.</p>
+    <p>Answer based on <strong>who you are today</strong> —<br>not who you want to be.</p>
+    <p><strong>Be honest.</strong></p>
+  </div>
+  <p class="intro-note">Your results will reveal your current stage of growth<br>and the best next step for your journey.</p>
+  <button class="btn-start" onclick="startQuiz()">Begin Assessment →</button>
+  <p class="intro-question-count">10 questions &nbsp;·&nbsp; ~3 minutes</p>
+</div>
+
+<!-- ═══════════════════ QUIZ ═══════════════════ -->
+<div id="quiz" class="screen">
+  <img class="q-splatter" src="https://assets.cdn.filesafe.space/vGU4Dd2wBV6N22A3YsRS/media/6a43ef0fc597b88b612d98c9.png" alt="" aria-hidden="true" />
+  <div class="prog-bar">
+    <div class="prog-meta">
+      <span class="prog-brand">STATUS PLUS</span>
+      <span class="prog-count" id="prog-count">1 / 10</span>
+    </div>
+    <div class="prog-track">
+      <div class="prog-fill" id="prog-fill" style="width:0%"></div>
+    </div>
+  </div>
+  <div id="q-container"></div>
+</div>
+
+<!-- ═══════════════════ BREAK ═══════════════════ -->
+<div id="break-screen" class="screen">
+  <div class="break-glow-tl" aria-hidden="true"></div>
+  <div class="break-fire" id="b-icon">🔥</div>
+  <div class="break-tag" id="b-tag">Check In</div>
+  <h2 class="break-headline" id="b-headline">Awareness is the first step.</h2>
+  <p class="break-sub" id="b-sub">You can't change what you refuse to acknowledge.</p>
+  <button class="break-btn" onclick="continueAfterBreak()">
+    Keep Going
+    <div class="break-arrow">→</div>
+  </button>
+</div>
+
+<!-- ═══════════════════ RESULTS ═══════════════════ -->
+<div id="results" class="screen">
+  <div class="res-inner" id="res-inner"></div>
+</div>
+
+<!-- ═══════════════════ SCRIPT ═══════════════════ -->
+<script>
+  /* ── Data ── */
+  const questions = [
+    {
+      id: 1,
+      cat: 'Current Reality',
+      text: 'Which statement feels most true right now?',
+      img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'I know I need to change, but I don\'t know where to start.' },
+        { l: 'B', t: 'I want more from life, but I struggle to stay consistent.' },
+        { l: 'C', t: 'I\'m actively working on becoming a better version of myself.' },
+        { l: 'D', t: 'I\'ve already changed a lot and I\'m focused on maintaining my standards.' }
+      ]
+    },
+    {
+      id: 2,
+      cat: 'Current Reality',
+      text: 'When you think about your future, what best describes how you feel?',
+      img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'Stuck' },
+        { l: 'B', t: 'Hopeful but frustrated' },
+        { l: 'C', t: 'Motivated' },
+        { l: 'D', t: 'Confident' }
+      ]
+    },
+    {
+      id: 3,
+      cat: 'Current Reality',
+      text: 'Which statement sounds most like you?',
+      img: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'I need inspiration and a new perspective.' },
+        { l: 'B', t: 'I need accountability and structure.' },
+        { l: 'C', t: 'I need tools to stay consistent.' },
+        { l: 'D', t: 'I need reminders of who I am becoming.' }
+      ]
+    },
+    {
+      id: 4,
+      cat: 'Action vs Intention',
+      text: 'How often do you invest time in your personal growth?',
+      img: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'Rarely' },
+        { l: 'B', t: 'Occasionally' },
+        { l: 'C', t: 'Weekly' },
+        { l: 'D', t: 'Daily' }
+      ]
+    },
+    {
+      id: 5,
+      cat: 'Action vs Intention',
+      text: 'When you discover something that could improve your life, what do you typically do?',
+      img: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'Save it and tell myself I\'ll start later.' },
+        { l: 'B', t: 'Get excited but struggle to follow through.' },
+        { l: 'C', t: 'Take action within a few days.' },
+        { l: 'D', t: 'Implement it immediately.' }
+      ]
+    },
+    {
+      id: 6,
+      cat: 'Action vs Intention',
+      text: 'Which statement best describes your current season of life?',
+      img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'I\'m searching for motivation.' },
+        { l: 'B', t: 'I\'m ready to make a change.' },
+        { l: 'C', t: 'I\'m actively building new habits.' },
+        { l: 'D', t: 'I\'m creating a new identity and lifestyle.' }
+      ]
+    },
+    {
+      id: 7,
+      cat: 'Identity & Discipline',
+      text: 'How would you describe your daily habits?',
+      img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'Inconsistent' },
+        { l: 'B', t: 'Improving but unstable' },
+        { l: 'C', t: 'Mostly aligned with my goals' },
+        { l: 'D', t: 'Intentional and disciplined' }
+      ]
+    },
+    {
+      id: 8,
+      cat: 'Identity & Discipline',
+      text: 'Which statement best describes your relationship with discipline?',
+      img: 'https://images.unsplash.com/photo-1549476464-37392f717541?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'I know I need more of it.' },
+        { l: 'B', t: 'I\'m working on building it.' },
+        { l: 'C', t: 'I\'m becoming disciplined.' },
+        { l: 'D', t: 'Discipline is part of who I am.' }
+      ]
+    },
+    {
+      id: 9,
+      cat: 'Who Are You Becoming?',
+      text: 'What would help you the most right now?',
+      img: 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'A new perspective that reminds me what\'s possible for my life.' },
+        { l: 'B', t: 'A structured system that helps me finally follow through.' },
+        { l: 'C', t: 'Daily habits and momentum that keep me moving forward.' },
+        { l: 'D', t: 'A lifestyle, community, and identity that reinforce the person I\'m becoming.' }
+      ]
+    },
+    {
+      id: 10,
+      cat: 'Who Are You Becoming?',
+      text: 'Complete this sentence: "Even on my worst day..."',
+      img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&h=400&fit=crop&q=80',
+      opts: [
+        { l: 'A', t: 'I\'m trying to believe things can get better.' },
+        { l: 'B', t: 'I\'m ready to do the work.' },
+        { l: 'C', t: 'I\'m committed to becoming better.' },
+        { l: 'D', t: 'My Status is Plus.' }
+      ]
+    }
+  ];
+
+  const breakData = {
+    3:  { icon: '🔥', tag: 'Reinforcement · Check In',   headline: 'Awareness is the first step.',      sub: 'You can\'t change what you refuse to acknowledge.' },
+    6:  { icon: '🔥', tag: 'Reinforcement · Keep Going', headline: 'Growth isn\'t about perfection.',   sub: 'It\'s about making a decision and following through.' },
+    8:  { icon: '🔥', tag: 'Reinforcement · Almost Done', headline: 'Your habits create your future.', sub: 'Your identity creates your habits.' }
+  };
+
+  const resultMap = {
+    A: {
+      icon: '📖',
+      type: 'THE AWAKENING SEEKER',
+      tagline: 'You\'re becoming aware. That\'s where all change begins.',
+      desc: 'You\'re at the most important stage of your journey — awareness. You know something needs to shift, and that recognition alone sets you apart. The Awakening Seeker is someone on the edge of transformation. What you need right now isn\'t more information — you need inspiration that makes you believe change is possible for you specifically.',
+      badge: 'PRIMARY RECOMMENDATION',
+      pIcon: '📖',
+      pTitle: 'Even On My Worst Day — The Book',
+      pDesc: 'A powerful read built for people who know they need to change but haven\'t found the spark yet. This book meets you exactly where you are — and walks you toward who you\'re becoming.',
+      pCta: 'Get The Book →',
+      pLink: 'https://evenonmyworstday.com/bookcheckoutpage',
+      sOffer: 'Also: Join our <a href="#">email inspiration series</a> — free daily doses of truth to keep you moving forward.',
+    },
+    B: {
+      icon: '🧠',
+      type: 'THE READY BUILDER',
+      tagline: 'You\'re ready. Now it\'s time to act.',
+      desc: 'You\'ve reached a critical turning point. You know what you want, you feel the pull toward change, and you\'re tired of starting over. The Ready Builder has the desire but needs a structure — a proven system that turns intention into action. You don\'t need more motivation. You need a challenge that holds you accountable.',
+      badge: 'PRIMARY RECOMMENDATION',
+      pIcon: '🧠',
+      pTitle: 'E.O.M.W.D. 15-Day Mindset Challenge',
+      pDesc: 'A 15-day challenge built specifically for people who are ready to stop starting and start building. Every day is a new assignment — small, specific, and powerful.',
+      pCta: 'Start The Challenge →',
+      pLink: '#',
+      sOffer: 'Better together: Grab the <a href="#">Challenge + Book Bundle</a> for the complete foundation.',
+    },
+    C: {
+      icon: '🧠',
+      type: 'THE MOMENTUM CREATOR',
+      tagline: 'You\'re in motion. Now let\'s accelerate.',
+      desc: 'You\'ve done the work. You\'re building habits, showing up consistently, and growing every week. The Momentum Creator doesn\'t need convincing — they need tools, community, and the right environment to sustain and accelerate their progress. You\'re ready to go deeper.',
+      badge: 'PRIMARY RECOMMENDATION',
+      pIcon: '🧠',
+      pTitle: 'Challenge + Accountability Bundle',
+      pDesc: 'Take the 15-Day Challenge with an accountability partner and structured community check-ins. Designed for people who are already moving and want to go further, faster.',
+      pCta: 'Get The Bundle →',
+      pLink: '#',
+      sOffer: 'Upgrade your identity: The <a href="#">Challenge + Apparel Bundle</a> lets you wear the mission you\'re living.',
+    },
+    D: {
+      icon: '👕',
+      type: 'THE STATUS PLUS LEADER',
+      tagline: 'You\'ve evolved. Now it\'s time to lead.',
+      desc: 'You don\'t need inspiration — you are the inspiration. The Status Plus Leader has done the internal work, built the identity, and is now living by their standards every single day. What you need isn\'t a book or a challenge. You need a community that matches your energy.',
+      badge: 'PRIMARY RECOMMENDATION',
+      pIcon: '👕',
+      pTitle: 'Status Plus Apparel Collection',
+      pDesc: 'Wear what you\'ve earned. Status Plus Apparel is more than clothing — it\'s a declaration. Each piece represents the mindset you\'ve built and the standards you refuse to lower.',
+      pCta: 'Shop The Collection →',
+      pLink: '#',
+      sOffer: 'Ready to lead? <a href="#">Apply for the Status Plus Ambassador Program</a> and join the inner community.',
+    }
+  };
+
+  /* ── State ── */
+  let currentIdx   = 0;
+  let answers      = new Array(questions.length).fill(null);
+  let breakTarget  = null;
+
+  /* ── Screen helpers ── */
+  function showOnly(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  /* ── Start ── */
+  function startQuiz() {
+    showOnly('quiz');
+    renderQuestion(0);
+  }
+
+  /* ── Render question ── */
+  function renderQuestion(idx) {
+    const q = questions[idx];
+    const total = questions.length;
+
+    // Progress
+    document.getElementById('prog-fill').style.width = ((idx / total) * 100) + '%';
+    document.getElementById('prog-count').textContent = (idx + 1) + ' / ' + total;
+
+    const container = document.getElementById('q-container');
+    container.innerHTML = `
+      <div class="q-wrap">
+        <div class="q-img-wrap">
+          <img class="q-img" src="${q.img}" alt="" loading="lazy" />
+          <div class="q-img-grad"></div>
+          <div class="q-cat-pill">${q.cat}</div>
+        </div>
+        <div class="q-body">
+          <div class="q-num">Question ${q.id} of ${total}</div>
+          <div class="q-text">${q.text}</div>
+          <div class="q-options">
+            ${q.opts.map((o, i) => `
+              <div class="opt" id="opt${i}" onclick="pick(${idx}, '${o.l}', ${i})">
+                <div class="opt-letter">${o.l}</div>
+                <div class="opt-text">${o.t}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  /* ── Pick answer ── */
+  function pick(qIdx, letter, optIdx) {
+    answers[qIdx] = letter;
+    document.querySelectorAll('.opt').forEach(el => el.classList.remove('selected'));
+    document.getElementById('opt' + optIdx).classList.add('selected');
+    setTimeout(() => advance(qIdx), 560);
+  }
+
+  /* ── Advance ── */
+  function advance(fromIdx) {
+    const next = fromIdx + 1;
+    if (breakData[fromIdx + 1]) {
+      const bd = breakData[fromIdx + 1];
+      document.getElementById('b-icon').textContent     = bd.icon;
+      document.getElementById('b-tag').textContent      = bd.tag;
+      document.getElementById('b-headline').textContent = bd.headline;
+      document.getElementById('b-sub').textContent      = bd.sub;
+      breakTarget = next;
+      showOnly('break-screen');
+    } else if (next >= questions.length) {
+      buildResults();
+    } else {
+      currentIdx = next;
+      renderQuestion(next);
+    }
+  }
+
+  /* ── Break → continue ── */
+  function continueAfterBreak() {
+    if (breakTarget >= questions.length) {
+      buildResults();
+    } else {
+      currentIdx = breakTarget;
+      showOnly('quiz');
+      renderQuestion(breakTarget);
+    }
+  }
+
+  /* ── Build results ── */
+  function buildResults() {
+    const counts = { A: 0, B: 0, C: 0, D: 0 };
+    answers.forEach(a => { if (a && counts[a] !== undefined) counts[a]++; });
+
+    const winner = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+    const r      = resultMap[winner];
+    const barColors = { A: '#6B8EFF', B: '#FF8C5A', C: '#5AFFCA', D: '#F41C18' };
+
+    const scoreBars = Object.entries(counts).map(([ltr, cnt]) => `
+      <div class="score-row">
+        <span class="score-ltr">${ltr}</span>
+        <div class="score-track">
+          <div class="score-fill" data-w="${(cnt / questions.length * 100).toFixed(0)}" style="width:0%; background:${barColors[ltr]}"></div>
+        </div>
+        <span class="score-val">${cnt}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('res-inner').innerHTML = `
+      <div class="res-header fade-in">
+        <div class="res-pill">📊 Your Results Are In</div>
+        <span class="res-icon">${r.icon}</span>
+        <div class="res-label">Your Stage</div>
+        <div class="res-type">${r.type}</div>
+        <p class="res-tagline">${r.tagline}</p>
+      </div>
+
+      <div class="res-desc fade-in">${r.desc}</div>
+
+      <div class="score-section fade-in">
+        <div class="section-divider">
+          <div class="divider-line"></div>
+          <div class="divider-label">Your Breakdown</div>
+          <div class="divider-line"></div>
+        </div>
+        <div class="score-bars">${scoreBars}</div>
+      </div>
+
+      <div class="section-divider fade-in">
+        <div class="divider-line"></div>
+        <div class="divider-label">Your Next Step</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="product-card fade-in">
+        <div class="product-badge">${r.badge}</div>
+        <div class="product-body">
+          <span class="product-icon">${r.pIcon}</span>
+          <div class="product-title">${r.pTitle}</div>
+          <div class="product-desc">${r.pDesc}</div>
+          <a class="btn-cta" href="${r.pLink}" target="_blank" rel="noopener noreferrer">${r.pCta}</a>
+        </div>
+      </div>
+
+      <div class="secondary-offer fade-in">${r.sOffer}</div>
+
+      <div class="res-footer fade-in">
+        <div class="res-footer-brand">STATUS PLUS</div>
+        <div class="res-footer-tag">Evolving minds. Elevated standards.</div>
+        <div class="res-links">
+          <a href="http://localhost:8731/index.html" class="res-link-btn primary" target="_blank" rel="noopener">
+            Visit Status Plus ↗
+          </a>
+          <a href="http://localhost:8731/quiz.html" class="res-link-btn outline">
+            Retake Assessment ↺
+          </a>
+        </div>
+      </div>
+    `;
+
+    showOnly('results');
+
+    // Animate bars after mount
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.querySelectorAll('.score-fill').forEach(el => {
+          el.style.width = el.dataset.w + '%';
+        });
+      }, 150);
+    });
+  }
+</script>
+</body>
+</html>

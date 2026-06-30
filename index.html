@@ -59,6 +59,7 @@
     </video>
     <div class="hero-video-fallback" aria-hidden="true"></div>
     <div class="hero-overlay"></div>
+    <div class="hero-splatter" aria-hidden="true"></div>
   </div>
 
   <div class="section-inner hero-content">
@@ -129,7 +130,7 @@
 
 <!-- ============ SECTION 3: WHAT STAGE ARE YOU IN ============ -->
 <section class="section stage-section" id="stage" aria-label="What Stage Are You In">
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;z-index:1;">
     <div class="section-head">
       <p class="eyebrow reveal" data-reveal>Find Your Place</p>
       <h2 class="reveal" data-reveal>What Stage Are You In?</h2>
@@ -137,21 +138,18 @@
 
     <div class="stage-cards">
       <article class="stage-card reveal" data-reveal data-delay="0">
-        <div class="stage-icon">📖</div>
         <p class="eyebrow">Awareness</p>
         <p class="stage-copy">You know something needs to change. But you're still trying to believe change is possible.</p>
         <a href="#ecosystem" class="btn btn-secondary stage-btn">Discover the Book</a>
       </article>
 
       <article class="stage-card stage-card-featured reveal" data-reveal data-delay="0.15">
-        <div class="stage-icon">🧠</div>
         <p class="eyebrow">Transformation</p>
         <p class="stage-copy">You're done talking. Done waiting. Done making excuses.</p>
         <a href="#ecosystem" class="btn btn-primary stage-btn">Start the Challenge</a>
       </article>
 
       <article class="stage-card reveal" data-reveal data-delay="0.3">
-        <div class="stage-icon">👕</div>
         <p class="eyebrow">Identity</p>
         <p class="stage-copy">You're already evolving. Now it's time to wear the mindset.</p>
         <a href="#ecosystem" class="btn btn-secondary stage-btn">Shop Status Plus</a>
@@ -162,7 +160,7 @@
 
 <!-- ============ SECTION 4: BREAK THE CYCLE ============ -->
 <section class="section cycle-section" id="cycle" aria-label="Break the Cycle">
-  <div class="section-inner cycle-grid">
+  <div class="section-inner cycle-grid" style="position:relative;z-index:1;">
     <div class="cycle-visual">
       <div class="cycle-ring" id="cycleRing">
         <div class="cycle-node" style="--i:0">Wake Up</div>
@@ -197,7 +195,7 @@
 
 <!-- ============ SECTION 5: STATUS PLUS ECOSYSTEM ============ -->
 <section class="section ecosystem-section" id="ecosystem" aria-label="Status Plus Ecosystem">
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;z-index:1;">
     <div class="section-head">
       <p class="eyebrow reveal" data-reveal>The Ecosystem</p>
       <h2 class="reveal" data-reveal>Status Plus Ecosystem</h2>
@@ -207,7 +205,6 @@
       <article class="ecosystem-panel reveal" data-reveal data-delay="0">
         <div class="ecosystem-img"><img src="assets/img/ecosystem-book.png" alt="Even On My Worst Day book cover"></div>
         <div class="ecosystem-body">
-          <div class="ecosystem-icon">📖</div>
           <h3>Even On My Worst Day</h3>
           <p>For inspiration · Perspective · Hope</p>
           <a href="#" class="btn btn-secondary">Get the Book</a>
@@ -217,7 +214,6 @@
       <article class="ecosystem-panel reveal" data-reveal data-delay="0.15">
         <div class="ecosystem-img"><img src="assets/img/ecosystem-challenge.png" alt="15 Day Reset challenge lifestyle"></div>
         <div class="ecosystem-body">
-          <div class="ecosystem-icon">🧠</div>
           <h3>15 Day Reset</h3>
           <p>For accountability · Structure · Execution</p>
           <a href="#" class="btn btn-secondary">Join Challenge</a>
@@ -227,7 +223,6 @@
       <article class="ecosystem-panel reveal" data-reveal data-delay="0.3">
         <div class="ecosystem-img"><img src="assets/img/ecosystem-apparel.png" alt="Status Plus apparel lifestyle"></div>
         <div class="ecosystem-body">
-          <div class="ecosystem-icon">👕</div>
           <h3>Status Plus</h3>
           <p>For confidence · Identity · Resilience</p>
           <a href="#" class="btn btn-secondary">Wear the Message</a>
@@ -237,12 +232,44 @@
   </div>
 </section>
 
+<!-- ============ SECTION 5B: IMAGINE ============ -->
+<section class="section imagine-section" id="imagine" aria-label="Imagine Waking Up Feeling Different">
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="section-head">
+      <p class="eyebrow reveal" data-reveal>The Shift</p>
+      <h2 class="reveal" data-reveal>Imagine Waking Up<br>Feeling Different...</h2>
+    </div>
+
+    <div class="imagine-intro reveal" data-reveal>
+      <p>Imagine waking up each morning feeling prepared for whatever the day brings.</p>
+      <p class="imagine-bridge">Not because life suddenly became easier...</p>
+      <p class="imagine-bridge">But because you became stronger.</p>
+      <p class="imagine-lead">After completing the E.O.M.W.D. 15-Day Mindset Challenge, you may begin to notice:</p>
+    </div>
+
+    <ul class="imagine-checks">
+      <li class="imagine-check reveal" data-reveal data-delay="0"><span class="imagine-check-mark">✔</span>Starting your day with more confidence and less anxiety</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.07"><span class="imagine-check-mark">✔</span>Responding to stressful situations with calm instead of frustration</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.14"><span class="imagine-check-mark">✔</span>Communicating more clearly and feeling understood by others</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.21"><span class="imagine-check-mark">✔</span>Following through on commitments you make to yourself</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.28"><span class="imagine-check-mark">✔</span>Spending less time overthinking and more time taking action</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.35"><span class="imagine-check-mark">✔</span>Replacing habits that drain your energy with habits that move you forward</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.42"><span class="imagine-check-mark">✔</span>Feeling more in control of your emotions, decisions, and future</li>
+      <li class="imagine-check reveal" data-reveal data-delay="0.49"><span class="imagine-check-mark">✔</span>Looking in the mirror and recognizing someone who is finally becoming aligned with who they know they can be</li>
+    </ul>
+
+    <div class="imagine-cta reveal" data-reveal>
+      <a href="#ecosystem" class="btn btn-primary">Start The Challenge</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SECTION 6: E.O.M.W.D FRAMEWORK ============ -->
 <section class="section framework-section" id="framework" aria-label="E.O.M.W.D Framework">
   <div class="framework-smoke" aria-hidden="true"></div>
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;z-index:1;">
     <div class="section-head">
-      <p class="eyebrow reveal" data-reveal>The Framework</p>
+      <p class="eyebrow reveal" data-reveal>The 5 Pillars of</p>
       <h2 class="reveal" data-reveal>E.O.M.W.D.</h2>
     </div>
 
@@ -273,7 +300,7 @@
 
 <!-- ============ SECTION 7: WHAT PEOPLE REALLY WANT ============ -->
 <section class="section want-section" id="want" aria-label="What People Really Want">
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;z-index:1;">
     <div class="section-head">
       <p class="eyebrow reveal" data-reveal>The Truth</p>
       <h2 class="reveal" data-reveal>What People Really Want</h2>
@@ -311,7 +338,7 @@
 
 <!-- ============ SECTION 8: STATUS DECLARATION ============ -->
 <section class="section declaration-section" id="declaration" aria-label="Status Declaration">
-  <div class="section-inner declaration-inner">
+  <div class="section-inner declaration-inner" style="position:relative;z-index:1;">
     <div class="declaration-lines" id="declarationLines">
       <p class="decl-line">I don't blame.</p>
       <p class="decl-line">I don't react.</p>
@@ -331,7 +358,7 @@
 
 <!-- ============ SECTION 9: TESTIMONIALS ============ -->
 <section class="section testimonials-section" id="testimonials" aria-label="Testimonials">
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;z-index:1;">
     <div class="section-head">
       <p class="eyebrow reveal" data-reveal>Real Stories</p>
       <h2 class="reveal" data-reveal>Status Plus Voices</h2>
@@ -367,7 +394,7 @@
 
 <!-- ============ ASSESSMENT ANCHOR / FINAL CTA ============ -->
 <section class="section assessment-section" id="assessment" aria-label="Take the Assessment">
-  <div class="section-inner assessment-inner">
+  <div class="section-inner assessment-inner" style="position:relative;z-index:1;">
     <p class="eyebrow reveal" data-reveal>Your Next Step</p>
     <h2 class="reveal" data-reveal>Discover Your Growth Stage</h2>
     <p class="assessment-sub reveal" data-reveal>A 2-minute assessment. One honest next step.</p>
